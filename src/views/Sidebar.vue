@@ -1,31 +1,27 @@
 <template lang="pug">
-#app
- body(:style='myside')
-    b-btn-group(vertical)
+#sidebar
+    b-sidebar(:style='myside')
         b-btn(to='/' size='lg' :style='mtbtn')
           font-awesome-icon(:icon='["fas", "play-circle"]')
-        br
         b-btn(to='/list' size='lg' :style='mtbtn')
           font-awesome-icon(:icon='["fas", "check"]')
-        br
         b-btn(to='/settings' size='lg' :style='mtbtn')
           font-awesome-icon(:icon='["fas", "cog"]')
-    keep-alive
-      router-view
+  keep-alive
 </template>
 <script>
 export default {
   name: 'App',
   data () {
     return {
-      mybgc: {
-        background: 'linear-gradient(to right, #6c757d 10%, #FAF0E6 10%)'
-      },
       mybtn: {
-        fontSize: '3rem'
+        display: 'block'
       },
       myside: {
-        background: 'linear-gradient(to right, #6c757d 10%, #FAF0E6 10%)',
+        width: '150px',
+        height: '100vh',
+        backgroundColor: '#6c757d',
+        textAlign: 'center',
         fontSize: '3rem'
       }
     }
