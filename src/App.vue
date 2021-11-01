@@ -1,34 +1,17 @@
 <template lang="pug">
-#app
- body(:style='myside')
-    b-btn-group(vertical)
-        b-btn(to='/' size='lg' :style='mtbtn')
-          font-awesome-icon(:icon='["fas", "play-circle"]')
-        br
-        b-btn(to='/list' size='lg' :style='mtbtn')
-          font-awesome-icon(:icon='["fas", "check"]')
-        br
-        b-btn(to='/settings' size='lg' :style='mtbtn')
-          font-awesome-icon(:icon='["fas", "cog"]')
-    keep-alive
-      router-view
+#app.vh-100.flex-row.d-flex
+  b-nav.justify-content-center.align-items-center.nav
+    b-nav-item(to='/list')
+      img(:src='require("./assets/icon-list.svg")')
+    b-nav-item(to='/analysis')
+      img(:src='require("./assets/icon-analysis.svg")')
+  keep-show
+  router-view
 </template>
 <script>
+import './style/app.styl'
+
 export default {
-  name: 'App',
-  data () {
-    return {
-      mybgc: {
-        background: 'linear-gradient(to right, #6c757d 10%, #FAF0E6 10%)'
-      },
-      mybtn: {
-        fontSize: '3rem'
-      },
-      myside: {
-        background: 'linear-gradient(to right, #6c757d 10%, #FAF0E6 10%)',
-        fontSize: '3rem'
-      }
-    }
-  }
+  name: 'App'
 }
 </script>

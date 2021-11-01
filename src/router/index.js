@@ -14,17 +14,21 @@ const routes = [
     }
   },
   {
-    path: '/sidebar',
-    name: 'sidebar',
-    component: Home
-  },
-  {
     path: '/settings',
     name: 'Settings',
     component: () =>
       import(/* webpackChunkName: "settings" */ '../views/Settings.vue'),
     meta: {
       title: '番茄鐘 | 設定'
+    }
+  },
+  {
+    path: '/analysis',
+    name: 'Analysis',
+    component: () =>
+      import(/* webpackChunkName: "analysis" */ '../views/Analysis.vue'),
+    meta: {
+      title: '番茄鐘 | 分析'
     }
   },
   {

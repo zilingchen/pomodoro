@@ -1,33 +1,49 @@
 <template lang="pug">
-#home
-  body(:style='mybg')
+#home.w-100.bg-green
     b-container
-      b-row(align-center)
-        b-col(cols='6')
-          b-btn(:style='mystyle' v-if='status !== 1' @click='start' pill)
-            font-awesome-icon(:icon='["fas", "play"]')
-          b-btn(variant='secondary' v-if='status === 1' @click='pause' pill)
-           font-awesome-icon(:icon='["fas", "pause"]')
-          h2(ml-auto) {{ timeText }}
-          b-btn(bg='secondary' v-if='current.length > 0' @click='finish(true)')
-            font-awesome-icon(:icon='["fas", "times"]')
-        b-col(cols='6')
-          b-span(class="rounded-circle border-dark" width='150px' height='150px')
-          h1(class="text-secondary" display='inline-block') {{ currentText }}
+      b-row.vh-100.mx-0
+        b-col(cols='12')
+          div.text-right
+            p {{  dateformat }}
+        b-col(cols='12')
+          b-row.text-center
+            b-col(cols='6')
+              div.mb-0
+                p.text-time {{ timeText }}
+                div.d-flex.align-items-center.ml-5
+                  b-btn.circle(to='/settings' pill)
+                    img(:src='require("../assets/icon-bell.svg")')
+                  b-btn.playbtn(v-if='status !== 1' @click='start' pill)
+                    img(:src='require("../assets/icon-play--orange.svg")')
+                  b-btn.playbtn(v-if='status === 1' @click='pause' pill)
+                    img(:src='require("../assets/icon-pause--orange.svg")')
+                  b-btn.circle(@click='finish(true)' pill)
+                    img(:src='require("../assets/icon-delete.svg")')
+            b-col.col-sm-6.text-left(cols='12')
+              div.pt-5.pb-2
+                ul
+                  template(v-for='(item,index) in list')
+                    li.my-3
+                      div.d-flex.align-items-center
+                        span.mr-3.taskcircle
+                        span.mr-auto.taskText {{ item }}
+                      div.smcircleLeft(v-if='index === 0')
+                        span.smcircle
+                        span.smcircle.ml-1
+                        span.smcircle.ml-1
+                        span.smcircle1.ml-1
+        b-col.mt-auto.d-flex.justify-content-center.align-items-end(cols='12')
+          router-link(to='/')
+            img(:src='require("../assets/tomato--orange.svg")')
 </template>
 
 <script>
+
 export default {
   name: 'Home',
   data () {
     return {
-      mybg: {
-        background: 'linear-gradient(to right, #6c757d 10%, #FAF0E6 10%)',
-        height: '60vh'
-      },
-      mystyle: {
-        backgroundColor: '#FFB6C1'
-      },
+      list: ['學習 Vue 切版', '練習番茄鐘', '只有部分功能', '其他功能沒有寫'],
       timer: 0
     }
   },
@@ -35,9 +51,9 @@ export default {
     status () {
       return this.$store.state.status
     },
-    list () {
-      return this.$store.state.list
-    },
+    // list () {
+    //   return this.$store.state.list
+    // },
     current () {
       return this.$store.state.current
     },

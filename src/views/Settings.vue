@@ -1,7 +1,7 @@
 <template lang="pug">
-#settings
-  body(:style='mybgb')
-    b-container
+#settings.bg-green.w-100
+  b-row
+    b-col.vh-100.boxshadow.text-sis(cols=6)
       b-table(:items='items' :fields='fields' @row-clicked='select')
         template(#cell(src)='data')
           audio(controls :src='require("../assets/"+data.value)')
@@ -14,10 +14,6 @@ export default {
   name: 'Settings',
   data () {
     return {
-      mybgb: {
-        background: 'linear-gradient(to right, #6c757d 10%, #FAF0E6 10%)',
-        height: '60vh'
-      },
       items: [
         { name: '鈴聲', src: 'alarm.mp3' },
         { name: 'Yay', src: 'yay.mp3' }
