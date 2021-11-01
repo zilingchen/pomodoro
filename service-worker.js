@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.112bdd0dbfaa3eba240ac67e2f894f65.js"
+  "precache-manifest.faa25733ef9379f702938ee9bcb03bf2.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "pomoto"});
